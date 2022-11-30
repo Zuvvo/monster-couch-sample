@@ -16,6 +16,7 @@ namespace MonsterCouch
         private void Awake()
         {
             _playerInstance = Instantiate(_playerObjectControllerPrefab);
+            _playerInstance.Init();
 
             _enemiesController.Init(_settings.EnemiesCount);
         }

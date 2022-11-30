@@ -239,6 +239,7 @@ MonoBehaviour:
   _enemiesController: {fileID: 1662548727}
   _settings:
     EnemiesCount: 1000
+    PlayerSpeed: 3
 --- !u!4 &1180220341
 Transform:
   m_ObjectHideFlags: 0

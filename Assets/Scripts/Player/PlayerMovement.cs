@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using MonsterCouch.Utilities;
 
 namespace MonsterCouch.Player
 {
@@ -8,10 +7,12 @@ namespace MonsterCouch.Player
     {
         public bool IsInitialized { get; private set; }
         [SerializeField] private float _speed;
+        private Camera _cam;
 
 
-        public void Init()
+        public void Init(Camera cam)
         {
+            _cam = cam;
             IsInitialized = true;
         }
 
@@ -21,10 +22,17 @@ namespace MonsterCouch.Player
             {
                 float horizontalMovement = Input.GetAxis("Horizontal");
                 float verticalMovement = Input.GetAxis("Vertical");
+                float deltaTime = Time.deltaTime;
 
-                transform.Translate(new Vector3(_speed * horizontalMovement, _speed * verticalMovement, 0));
+                Vector3 translationVec = new Vector3(_speed * deltaTime * horizontalMovement, _speed * deltaTime * verticalMovement, 0);
+
+                Vector3 newPos = transform.position + translationVec;
+
+                if (ScreenUtilities.IsWorldPosInsideScreenRange(_cam, newPos))
+                {
+                    transform.Translate(translationVec);
+                }
             }
         }
     }
-
 }

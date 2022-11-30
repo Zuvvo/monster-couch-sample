@@ -6,9 +6,9 @@ namespace MonsterCouch.Player
     {
         [SerializeField] private PlayerMovement _playerMovement;
 
-        public void Init()
+        public void Init(Camera cam)
         {
-            _playerMovement.Init();
+            _playerMovement.Init(cam);
         }
     }
 }

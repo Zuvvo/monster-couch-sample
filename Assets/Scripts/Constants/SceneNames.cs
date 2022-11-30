@@ -1,5 +1,9 @@
-public static class SceneNames
+namespace MonsterCouch.Constants
 {
-    public const string GameScene = "Game";
-    public const string MainMenuScene = "MainMenu";
+    public static class SceneNames
+    {
+        public const string GameScene = "Game";
+        public const string MainMenuScene = "MainMenu";
+    }
+
 }

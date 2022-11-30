@@ -2,6 +2,8 @@ using UnityEngine;
 using MonsterCouch.AI;
 using MonsterCouch.Player;
 using MonsterCouch.Settings;
+using UnityEngine.SceneManagement;
+using MonsterCouch.Constants;
 
 namespace MonsterCouch
 {
@@ -22,6 +24,14 @@ namespace MonsterCouch
             _playerInstance.Init(_mainCamera);
 
             _enemiesController.Init(_settings.EnemiesCount, _playerInstance, _mainCamera, _settings.EnemySpawnMaxOffsetFromCenter);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(SceneNames.MainMenuScene);
+            }
         }
     }
 }

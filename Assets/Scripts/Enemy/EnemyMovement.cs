@@ -1,6 +1,6 @@
 using UnityEngine;
 using MonsterCouch.Player;
-using System;
+using MonsterCouch.Constants;
 using MonsterCouch.Utilities;
 
 namespace MonsterCouch.AI
@@ -11,9 +11,11 @@ namespace MonsterCouch.AI
 
         private PlayerObjectController _player;
         private Camera _cam;
+        private EnemyAI _enemyAI;
 
-        public void Init(PlayerObjectController player, Camera cam)
+        public void Init(EnemyAI enemyAI, PlayerObjectController player, Camera cam)
         {
+            _enemyAI = enemyAI;
             _player = player;
             _cam = cam;
         }
@@ -29,6 +31,14 @@ namespace MonsterCouch.AI
             if (ScreenUtilities.IsWorldPosInsideScreenRange(_cam, newPos))
             {
                 transform.Translate(translationVec);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag(TagConstants.Player))
+            {
+                _enemyAI.CallOnPlayerTouched();
             }
         }
     }

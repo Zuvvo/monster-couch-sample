@@ -21,7 +21,7 @@ namespace MonsterCouch
             _playerInstance = Instantiate(_playerObjectControllerPrefab);
             _playerInstance.Init(_mainCamera);
 
-            _enemiesController.Init(_settings.EnemiesCount);
+            _enemiesController.Init(_settings.EnemiesCount, _playerInstance, _mainCamera, _settings.EnemySpawnMaxOffsetFromCenter);
         }
     }
 }
